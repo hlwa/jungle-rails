@@ -22,7 +22,7 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Stripe Testing
 
-Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
+Use Credit Card # 4242424242424242 cvv: any 3 digits, data: any future date for testing success scenarios.
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
 
