@@ -6,5 +6,4 @@ class Admin::DashboardController < ApplicationController
     @categories = Category.all
     @c_count = @categories.count
   end
-
 end
