@@ -30,6 +30,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :cart_subtotal_cents
 
+  def cart_total_quantities
+    enhanced_cart.map {|entry| entry[:quantity]}.sum
+  end
+  helper_method :cart_total_quantities
+
 
   def update_cart(new_cart)
     cookies[:cart] = {

@@ -1,9 +1,14 @@
 class OrdersController < ApplicationController
 
-  before_filter :authorize
+  # before_filter :authorize
 
   def show
     @order = Order.find(params[:id])
+    @order_details = LineItem.where(order_id: params[:id])
+    @order_items = []
+    @order_details.each do |order_detail|
+      @order_items.push(Product.find(order_detail[:product_id]))
+    end
   end
 
   def create
@@ -37,10 +42,12 @@ class OrdersController < ApplicationController
     )
   end
 
+
   def create_order(stripe_charge)
     order = Order.new(
       email: params[:stripeEmail],
       total_cents: cart_subtotal_cents,
+      # total_quantities: cart_total_quantities,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
 
